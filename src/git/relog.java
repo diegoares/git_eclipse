@@ -1,6 +1,15 @@
 package git;
 
+
 import java.util.ArrayList;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+
 
 public class relog {
 	private int hora;
@@ -54,6 +63,7 @@ public class relog {
 		this.minutos=minutos;
 		this.segundos=segundos;
 	}
+
 	public void print(String Entrada) {
 		int numEquipos = 5;
 
@@ -85,7 +95,29 @@ public class relog {
 		System.out.print("\nDime el equipo que esta en la posicion 3 del Arralist: ");
 		String posicion3 = Entrada;
 		liga.remove(posicion3);
-		System.out.println("\n\tArrayList liga con la posición 3 borrada: " + liga);
+		System.out.println("\n\tArrayList liga con la posición 3 borrada: " + liga);}
+
+	public void write() {
+		File origen = new File("origen.txt");
+		File destino = new File("destino.txt");
+
+		try {
+		  InputStream in = new FileInputStream(origen);
+		  OutputStream out = new FileOutputStream(destino);
+						
+		  byte[] buf = new byte[1024];
+		  int len;
+
+		  while ((len = in.read(buf)) > 0) {
+		    out.write(buf, 0, len);
+		  }
+				
+		  in.close();
+		  out.close();
+		} catch (IOException ioe){
+		  ioe.printStackTrace();
+		}
+
 
 	}
 }
