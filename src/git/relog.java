@@ -115,7 +115,7 @@ public class relog {
 		  in.close();
 		  out.close();
 		} catch (IOException ioe){
-		  ioe.printStackTrace();
+		  
 		}
 
 
